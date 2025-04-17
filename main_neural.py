@@ -35,7 +35,7 @@ def main():
                       help='Tipo de modelo neural: deterministic ou variational')
     parser.add_argument('--ensemble_size', type=int, default=3,
                       help='Número de modelos no ensemble neural')
-    parser.add_argument('--neural_weight', type=float, default=0.5,
+    parser.add_argument('--neural_weight', type=float, default=0.2,
                       help='Peso do modelo neural na combinação com ensemble tradicional (0-1)')
     
     args = parser.parse_args()

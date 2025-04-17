@@ -1,0 +1,52 @@
+flowchart TB
+    %% Entrada de Dados
+    A[Dados Brutos] --> B{Preparação de Dados}
+    
+    %% Processamento de Dados
+    B --> |Limpeza| C[Imputação KNN]
+    B --> |Engenharia de Recursos| D[Criar 10 Características Derivadas]
+    
+    %% Treinamento de Modelos
+    C --> E[Divisão Treino/Validação]
+    D --> E
+    
+    %% Ensemble de Modelos
+    E --> F{Treinamento de Modelos}
+    F --> |Otimização Bayesiana| G[XGBoost]
+    F --> |Otimização Bayesiana| H[LightGBM]
+    F --> |Otimização Bayesiana| I[GradientBoosting]
+    F --> |Otimização Bayesiana| J[RandomForest]
+    
+    %% Stacking
+    G --> K[Stacking Ensemble]
+    H --> K
+    I --> K
+    J --> K
+    
+    %% Modelos Neurais
+    E --> L[Modelo Neural CNN-LSTM]
+    L --> M[Modelo Variacional]
+    
+    %% Geração de Realizações
+    K --> N{Geração de Realizações}
+    M --> N
+    
+    %% Calibração
+    N --> O[Calibração por Região]
+    
+    %% Avaliação
+    O --> P[Cálculo NLL]
+    
+    %% Submissão
+    P --> Q[Preparação de Submissão]
+    
+    %% Legenda de Cores
+    classDef dados fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef processamento fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef modelo fill:#bfb,stroke:#333,stroke-width:2px;
+    classDef avaliacao fill:#ff9,stroke:#333,stroke-width:2px;
+    
+    class A,C,D dados;
+    class E,F,K,L,M processamento;
+    class G,H,I,J,N modelo;
+    class P,Q avaliacao;

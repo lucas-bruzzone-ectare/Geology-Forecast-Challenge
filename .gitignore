@@ -1,6 +1,5 @@
 data
 __pycache__
 submission*
-*.png
 *.pkl
 *.pt
